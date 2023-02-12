@@ -13,19 +13,19 @@ document.getElementById("generate").addEventListener("click", (e) => {
   const content = document.getElementById("feelings").value;
   if (zip.length === 0) {
     alert("Enter zip code here");
- } else {
-getWeather(baseUrl, zip, key)
-.then((data) => {
-  console.log(data);
- postData("/all", {
-   data: newDate,
-   temp: data.main.temp,
-   content: content,
- });
- })
-.then((data) => {
- updateUI();
- });
+  } else {
+    getWeather(baseUrl, zip, key)
+      .then((data) => {
+        console.log(data);
+        postData("/all", {
+          data: newDate,
+          temp: data.main.temp,
+          content: content,
+        });
+      })
+      .then((data) => {
+        updateUI();
+      });
   }
 });
 // function called by event listener
@@ -68,7 +68,9 @@ async function updateUI() {
     const allD = await res.json();
     document.getElementById("date").innerHTML = `Date : ${allD.data}`;
     document.getElementById("temp").innerHTML = `Temprature : ${allD.temp}`;
-    document.getElementById("content").innerHTML = `My feeling : ${allD.content}`;
+    document.getElementById(
+      "content"
+    ).innerHTML = `My feeling : ${allD.content}`;
   } catch (error) {
     console.log("error", error);
   }
