@@ -56,3 +56,4 @@ app.post("/all", (req, res) => {
   projectData = req.body;
   res.send(projectData);
 });
+
